@@ -15,11 +15,15 @@ public class PointAndClickMovement : MonoBehaviour
     private Vector3 _currentGoToPos;
     private NavMeshAgent _navMeshAgent;
     private bool _bInteracting = false;
+    private bool _bAttacking = false;
     private Interactable _interactable;
+    private Enemy _enemy;
+    private Player _player;
     private void Start()
     {
         _camera = Camera.main;
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _player = GetComponent<Player>();
     }
 
     private void Update()
@@ -53,18 +57,41 @@ public class PointAndClickMovement : MonoBehaviour
                     DrawLocation();
                     MoveToLocation();
                 }
+                else if (hit.transform.CompareTag("Enemy"))
+                {
+                    _enemy = hit.transform.gameObject.GetComponent<Enemy>();
+                    _bAttacking = true;
+                    
+                    RaycastHit newHit;
+                    
+                    if (Physics.Raycast(hit.point + ray.direction * 0.01f, ray.direction, out newHit, maxDistance, groundLayer))
+                    {
+                        _currentGoToPos = newHit.point;
+                        DrawLocation();
+                        MoveToLocation();
+                    }
+                }
             }
         }
 
         if (_bInteracting)
         {
-            //Debug.Log(Vector3.Distance(transform.position, _currentGoToPos));
             if (Vector3.Distance(transform.position, _currentGoToPos) < 2f && _interactable)
             {
                 _navMeshAgent.isStopped = true;
                 _interactable.Interact();
                 _bInteracting = false;
             }
+        }
+
+        if (_bAttacking && Input.GetMouseButtonDown(0))
+        {
+            if (Vector3.Distance(transform.position, _currentGoToPos) < 2f && _enemy)
+            {
+                _navMeshAgent.isStopped = true;
+                _enemy.TakeDamage(10f);
+                _bInteracting = false;
+            } 
         }
         
     }
