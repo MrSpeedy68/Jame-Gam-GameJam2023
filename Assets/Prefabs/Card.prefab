@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1313977442780180980}
   - component: {fileID: 223214773379384002}
   - component: {fileID: 2942695798512589955}
+  - component: {fileID: 1062776756893242925}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -76,3 +77,29 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1062776756893242925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8473855456902861556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970524d92aca9a44bad68855a9cb58dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  ability: 0
+  buff: 1
+  coolDownTime: 15
+  cardImage: {fileID: 2942695798512589955}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  cardName: Instant Health
+  isActive: 1
+  buffDuration: 10
+  damageBuff: 0
+  speedBuff: 0
+  defenceBuff: 0
+  attackSpeedBuff: 0
+  healthBuff: 20

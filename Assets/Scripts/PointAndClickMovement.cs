@@ -19,19 +19,69 @@ public class PointAndClickMovement : MonoBehaviour
     private Interactable _interactable;
     private Enemy _enemy;
     private Player _player;
+    private Animator _animator;
+    private AnimatorStateInfo _animationStateInfo;
+    
     private void Start()
     {
         _camera = Camera.main;
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _player = GetComponent<Player>();
+        _animator = GetComponentInChildren<Animator>();
+
+        _currentGoToPos = transform.position;
     }
 
     private void Update()
     {
+        _animationStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+        _animator.SetFloat("DistanceToTarget", Vector3.Distance(transform.position, _currentGoToPos));
+        
+        // Animation State Machine
+        if (_animationStateInfo.IsName("Walking"))
+        {
+            _navMeshAgent.isStopped = false;
+            MoveToLocation();
+        }
+        
+        if (_animationStateInfo.IsName("Idle"))
+        {
+            _navMeshAgent.isStopped = true;
+        }
+        
+        if (_animationStateInfo.IsName("Attack"))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (_enemy)
+                {
+                    _animator.SetTrigger("Attack");
+                    _enemy.TakeDamage(10f);
+                    _navMeshAgent.isStopped = true;
+                    _bInteracting = false;
+                }
+                else
+                {
+                    _animator.SetBool("isAttack", false);
+                }
+            }
+        }
+        
+
+        if (Vector3.Distance(transform.position, _currentGoToPos) < 2f && _interactable && _bInteracting)
+        {
+            _navMeshAgent.isStopped = true;
+            _interactable.Interact();
+            _bInteracting = false;
+        }
+        
+        
+        // Mouse Input
         if (Input.GetMouseButtonDown(0))
         {
             _navMeshAgent.isStopped = false;
-            
+
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
@@ -40,60 +90,40 @@ public class PointAndClickMovement : MonoBehaviour
                 if (hit.transform.CompareTag("Interactable"))
                 {
                     _interactable = hit.transform.gameObject.GetComponent<Interactable>();
+                    _animator.SetBool("isInteract", true);
                     _bInteracting = true;
                     
-                    RaycastHit newHit;
-                    
-                    if (Physics.Raycast(hit.point + ray.direction * 0.01f, ray.direction, out newHit, maxDistance, groundLayer))
-                    {
-                        _currentGoToPos = newHit.point;
-                        DrawLocation();
-                        MoveToLocation();
-                    }
+                    FindGroundPoint(hit, ray);
                 }
                 else if (hit.transform.CompareTag("Ground"))
                 {
                     _currentGoToPos = hit.point;
+                    //_animator.SetTrigger("Walking");
                     DrawLocation();
                     MoveToLocation();
                 }
                 else if (hit.transform.CompareTag("Enemy"))
                 {
                     _enemy = hit.transform.gameObject.GetComponent<Enemy>();
-                    _bAttacking = true;
-                    
-                    RaycastHit newHit;
-                    
-                    if (Physics.Raycast(hit.point + ray.direction * 0.01f, ray.direction, out newHit, maxDistance, groundLayer))
-                    {
-                        _currentGoToPos = newHit.point;
-                        DrawLocation();
-                        MoveToLocation();
-                    }
+                    _animator.SetBool("isAttack", true);
+
+                    FindGroundPoint(hit, ray);
                 }
             }
         }
+    }
 
-        if (_bInteracting)
-        {
-            if (Vector3.Distance(transform.position, _currentGoToPos) < 2f && _interactable)
-            {
-                _navMeshAgent.isStopped = true;
-                _interactable.Interact();
-                _bInteracting = false;
-            }
-        }
+    private void FindGroundPoint(RaycastHit hit, Ray ray)
+    {
+        RaycastHit newHit;
 
-        if (_bAttacking && Input.GetMouseButtonDown(0))
+        if (Physics.Raycast(hit.point + ray.direction * 0.01f, ray.direction, out newHit, maxDistance,
+                groundLayer))
         {
-            if (Vector3.Distance(transform.position, _currentGoToPos) < 2f && _enemy)
-            {
-                _navMeshAgent.isStopped = true;
-                _enemy.TakeDamage(10f);
-                _bInteracting = false;
-            } 
+            _currentGoToPos = newHit.point;
+            DrawLocation();
+            MoveToLocation();
         }
-        
     }
     
     private void MoveToLocation()
