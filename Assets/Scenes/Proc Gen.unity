@@ -364,7 +364,9 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 6424371161549266863, guid: e5b4553842113fd4faf8d2d7328ab109, type: 3}
   - {fileID: 5485392100778650263, guid: fed5703158f051b4999ba21891013901, type: 3}
-  maxRooms: 4
+  - {fileID: 5837963453506563135, guid: 11f9e28549f99b84ab17e7de57d1d457, type: 3}
+  - {fileID: 1812170376586340597, guid: 347f7069eca52c04bbfca845e877cc19, type: 3}
+  maxRooms: 7
   startPoint: {fileID: 1103129438}
 --- !u!4 &2120337460
 Transform:

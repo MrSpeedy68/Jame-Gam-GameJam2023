@@ -19,4 +19,9 @@ public class GameAssets : MonoBehaviour
     }
     
     public Transform pfDamagePopup;
+
+    public GameObject Card1;
+    public GameObject Card2;
+    public GameObject Card3;
+    public GameObject Card4;
 }

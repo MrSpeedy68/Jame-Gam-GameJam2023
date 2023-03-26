@@ -701,9 +701,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 353623840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca0a98feabdd274f9acf2e257ed889f, type: 3}
+  m_Script: {fileID: 11500000, guid: b88a4d05ebee680419971d0dd10c9825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardList:
+  - {fileID: 8473855456902861556, guid: d2a4a5ff86f90764788dee2f149b3a7e, type: 3}
+  - {fileID: 8473855456902861556, guid: 412cc6a0cbf49cb4cb8fae7a055caf59, type: 3}
+  - {fileID: 8473855456902861556, guid: 22bd91ef708a918488f53140b0cb4557, type: 3}
+  - {fileID: 8473855456902861556, guid: e6bb9c42a2cce7246a8ae6616b1dfc13, type: 3}
+  buttonList: []
+  pp: 0
 --- !u!1 &419635160
 GameObject:
   m_ObjectHideFlags: 0

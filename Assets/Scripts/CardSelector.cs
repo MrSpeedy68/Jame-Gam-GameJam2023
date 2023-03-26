@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CardSelection : MonoBehaviour
+public class CardSelector : MonoBehaviour
 {
-    [SerializeField]private List<GameObject> cardList; // List of existing cards
-    [SerializeField]private List<Button> buttonList; // List of buttons to assign the selected cards to
-    [SerializeField]private int pp;
+    [SerializeField] private List<GameObject> cardList; // List of existing cards
+    [SerializeField] private List<Button> buttonList; // List of buttons to assign the selected cards to
+    [SerializeField] private int pp;
 
     private List<GameObject> selectedCards = new List<GameObject>(); // List of selected cards
 
