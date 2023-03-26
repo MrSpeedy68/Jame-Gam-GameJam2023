@@ -38,8 +38,8 @@ public class Card : MonoBehaviour
     public ABILITY ability;
     public BUFF buff;
     public float coolDownTime;
-
-    public Image cardImage;
+    
+    public Sprite cardSprite;
     public Color color = Color.green;
     public String cardName;
 
@@ -62,7 +62,6 @@ public class Card : MonoBehaviour
     {
         isActive = false;
         _currentCoolDown = coolDownTime;
-        cardImage = GetComponent<Image>();
     }
 
     private void Update()
