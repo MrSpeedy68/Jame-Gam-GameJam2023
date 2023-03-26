@@ -14,7 +14,7 @@ public class CardManager : MonoBehaviour
 
         foreach (var card in cards)
         {
-            card.color = Color.green;
+            card.color = Color.white;
         }
     }
 
@@ -119,7 +119,7 @@ public class CardManager : MonoBehaviour
             yield return null;
         }
         
-        cards[index].color = Color.green;
+        cards[index].color = Color.white;
     }
     
     private void ActivateAbility(int index)

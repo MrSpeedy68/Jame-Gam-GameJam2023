@@ -4,7 +4,5 @@ using UnityEngine;
 
 public class ProcGenRoom : MonoBehaviour
 {
-    public SnapPoint[] SnapPoints;
-    
-    
+    public GameObject[] SnapPoints;
 }
