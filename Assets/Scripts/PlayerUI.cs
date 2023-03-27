@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    private int currentScore = 0;
+    private Player player;
     private CardManager _cardManager;
     [SerializeField] private GameObject[] _cardSlots;
 
@@ -15,8 +15,8 @@ public class PlayerUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateScore();
-        _cardManager = GameObject.FindWithTag("Player").GetComponent<CardManager>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        _cardManager = player.GetComponent<CardManager>();
     }
 
     private void Update()
@@ -24,6 +24,10 @@ public class PlayerUI : MonoBehaviour
         if (_cardManager)
         {
             UpdateCards();
+        }
+        if (player)
+        {
+            UpdateScore();
         }
     }
 
@@ -38,12 +42,6 @@ public class PlayerUI : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoretext.text = "Score: " + currentScore;
-    }
-
-    public void AddScore(int score)
-    {
-        currentScore += score;
-        UpdateScore();
+        scoretext.text = "Score: " + player.GetScore();
     }
 }

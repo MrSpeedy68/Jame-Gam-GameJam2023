@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CardSelector : MonoBehaviour
 {
+    private Player player;
+    private int currentSelectedCard = 0;
     [SerializeField] private List<Card> cardList; // List of existing cards
     [SerializeField] private List<Button> buttonList; // List of buttons to assign the selected cards to
+    [SerializeField] private TMPro.TMP_Dropdown dropdown;
 
     private List<Card> selectedCards = new List<Card>(5);
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
         SelectCards();
 
         // Assign the selected cards to the buttons
@@ -36,5 +41,36 @@ public class CardSelector : MonoBehaviour
                 i--; // If the card has already been selected, try again
             }
         }
+    }
+
+    public void PurchaseCard(int index)
+    {
+        if(player.score >= selectedCards[index].cardPrice)
+        {
+            player.RemoveScore(selectedCards[index].cardPrice);
+            if(!player.IsDeckFull())
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    if (player.cardDeck[i] != null)
+                    {
+                        player.cardDeck[i] = selectedCards[index];
+                        break;
+                    }
+                }
+                
+            }
+            else
+            {
+                player.cardDeck[currentSelectedCard] = selectedCards[index];
+            }
+           
+        }
+        
+    }
+
+    public void OnCardNumberSelected(int index)
+    {
+        currentSelectedCard = dropdown.value;
     }
 }

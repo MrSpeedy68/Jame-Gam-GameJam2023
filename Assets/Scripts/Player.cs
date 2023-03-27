@@ -52,6 +52,21 @@ public class Player : MonoBehaviour
         //Destroy(gameObject);
     }
 
+    public void AddScore(int point)
+    {
+        score += point;
+    }
+
+    public void RemoveScore(int point)
+    {
+        score -= point;
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
     // Return Player stats
     public float GetDamage()
     {
@@ -76,5 +91,18 @@ public class Player : MonoBehaviour
     public float GetHealth()
     {
         return health;
+    }
+
+    public bool IsDeckFull()
+    {
+        int cardNo = 0;
+        for(int i = 0; i < 4; i++)
+        {
+            if(cardDeck[i] != null)
+            {
+                cardNo++;
+            }
+        }
+        return cardNo == 4;
     }
 }
