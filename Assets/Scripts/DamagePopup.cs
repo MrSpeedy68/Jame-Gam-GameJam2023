@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class DamagePopup : MonoBehaviour
 {
-    public static DamagePopup Create(Vector3 position, int damageAmount)
+    public static DamagePopup Create(Vector3 position, string damageAmount)
     {
         Transform damagePopupTranform = Instantiate(GameAssets.i.pfDamagePopup, position, Quaternion.identity);
         
@@ -25,9 +25,9 @@ public class DamagePopup : MonoBehaviour
         _textMeshPro = transform.GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount)
+    public void Setup(string damageAmount)
     {
-        _textMeshPro.SetText(damageAmount.ToString());
+        _textMeshPro.SetText(damageAmount);
         _textColor = _textMeshPro.color;
     }
     

@@ -34,11 +34,13 @@ public class Player : MonoBehaviour
         if (randVal < GetDefence())
         {
             Debug.Log("Player blocked the attack");
+            DamagePopup.Create(transform.position + Vector3.up * 2, "Blocked");
         }
         else
         {
             health -= damageTaken;
-            Debug.Log("Player took " + damageTaken + " damage");
+            int damage = (int)damageTaken;
+            DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString());
             if (health <= 0)
             {
                 Die();

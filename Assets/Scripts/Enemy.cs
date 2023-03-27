@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private bool _bAttacking = false;
     private Player _player;
     private NavMeshAgent _navMeshAgent;
+    private bool _bisDead = false;
     
     private void Start()
     {
@@ -57,9 +58,11 @@ public class Enemy : MonoBehaviour
                 if (hit.collider.CompareTag("Player"))
                 {
                     _player = hit.collider.GetComponent<Player>();
-                
-                    if (_navMeshAgent)
+
+                    if (!_bisDead)
+                    {
                         _navMeshAgent.SetDestination(_player.transform.position);
+                    }
                 }
             }
             else
@@ -73,7 +76,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         health -= damageTaken;
-        DamagePopup.Create(transform.position + Vector3.up * 2, (int)damageTaken);
+        int damage = (int)damageTaken;
+        DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString());
     }
 
     public void DealDamage()
@@ -86,6 +90,8 @@ public class Enemy : MonoBehaviour
     
     private void Die()
     {
+        _bisDead = true;
+        
         Destroy(gameObject);
     }
 
