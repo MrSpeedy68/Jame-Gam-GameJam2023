@@ -43,6 +43,8 @@ public class Card : MonoBehaviour
     public Color color = Color.green;
     public String cardName;
 
+    public int cardPrice;
+
     [HideInInspector]
     public bool isActive = false;
 

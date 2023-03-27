@@ -6,12 +6,16 @@ using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
+    private int currentScore = 0;
     private CardManager _cardManager;
     [SerializeField] private GameObject[] _cardSlots;
-    
+
+    public Text scoretext;
+
     // Start is called before the first frame update
     void Start()
     {
+        UpdateScore();
         _cardManager = GameObject.FindWithTag("Player").GetComponent<CardManager>();
     }
 
@@ -30,5 +34,16 @@ public class PlayerUI : MonoBehaviour
             _cardSlots[i].GetComponent<Image>().sprite = _cardManager.cards[i].cardSprite;
             _cardSlots[i].GetComponent<Image>().color = _cardManager.cards[i].color;
         }
+    }
+
+    private void UpdateScore()
+    {
+        scoretext.text = "Score: " + currentScore;
+    }
+
+    public void AddScore(int score)
+    {
+        currentScore += score;
+        UpdateScore();
     }
 }
