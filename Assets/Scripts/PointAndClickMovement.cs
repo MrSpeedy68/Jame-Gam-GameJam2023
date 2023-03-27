@@ -21,6 +21,7 @@ public class PointAndClickMovement : MonoBehaviour
     private Player _player;
     private Animator _animator;
     private AnimatorStateInfo _animationStateInfo;
+    private Outline _outlinedObject;
     
     private void Start()
     {
@@ -74,6 +75,29 @@ public class PointAndClickMovement : MonoBehaviour
             _navMeshAgent.isStopped = true;
             _interactable.Interact();
             _bInteracting = false;
+        }
+        
+        //Outlining Objects
+        
+        Ray rayOutline = _camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitOutline;
+        if (Physics.Raycast(rayOutline, out hitOutline, maxDistance))
+        {
+            if (hitOutline.transform.CompareTag("Interactable"))
+            {
+                _outlinedObject = hitOutline.transform.gameObject.GetComponent<Outline>();
+                _outlinedObject.enabled = true;
+            }
+            else if (hitOutline.transform.CompareTag("Enemy"))
+            {
+                _outlinedObject = hitOutline.transform.gameObject.GetComponent<Outline>();
+                _outlinedObject.enabled = true;
+            }
+            else if (_outlinedObject)
+            {
+                _outlinedObject.enabled = false;
+                _outlinedObject = null;
+            }
         }
         
         
