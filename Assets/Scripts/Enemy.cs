@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
@@ -9,13 +10,17 @@ public class Enemy : MonoBehaviour
     public float health = 100f;
     public float damage = 10f;
     public float attackInterval = 5f;
+    public float maxSightDistance = 10f;
+    public int rayAmount = 7;
     
     private float _attackTimer = 0f;
     private bool _bAttacking = false;
     private Player _player;
-
+    private NavMeshAgent _navMeshAgent;
+    
     private void Start()
     {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         _attackTimer = attackInterval;
     }
 
@@ -37,6 +42,32 @@ public class Enemy : MonoBehaviour
                 _attackTimer = attackInterval;
             }
         }
+
+        for (int i = 0; i < rayAmount; i++)
+        {
+            // calculate the angle for this ray based on the number of rays
+            float angle = i * Mathf.PI * 2f / rayAmount;
+            // convert angle to a direction vector
+            Vector3 direction = new Vector3(Mathf.Sin(angle), 0f, Mathf.Cos(angle));
+            // shoot a ray in that direction
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, direction, out hit, maxSightDistance))
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.red);
+                if (hit.collider.CompareTag("Player"))
+                {
+                    _player = hit.collider.GetComponent<Player>();
+                
+                    if (_navMeshAgent)
+                        _navMeshAgent.SetDestination(_player.transform.position);
+                }
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, direction * maxSightDistance, Color.green);
+            }
+        }
+       
     }
 
     public void TakeDamage(float damageTaken)
