@@ -9,11 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8031977866864228356}
-  - component: {fileID: 8031977866871379962}
   - component: {fileID: 8854677247501609986}
   - component: {fileID: 8854677247501609987}
   - component: {fileID: 8854677247501610108}
-  - component: {fileID: 1382823598}
+  - component: {fileID: 1382823604}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -37,83 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8031977866871379962
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8031977866863993894}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 7e1aa3914b207eb4186039f0571a386b, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: '
-
-    Transform ''LeftToeBase'' has been deleted
-
-    Transform
-    ''LeftFoot'' has been deleted
-
-    Transform ''LeftLeg'' has been deleted
-
-    Transform
-    ''LeftUpLeg'' has been deleted
-
-    Transform ''RightToeBase'' has been deleted
-
-    Transform
-    ''RightFoot'' has been deleted
-
-    Transform ''RightLeg'' has been deleted
-
-    Transform
-    ''RightUpLeg'' has been deleted
-
-    Transform ''LeftHand'' has been deleted
-
-    Transform
-    ''LeftForeArm'' has been deleted
-
-    Transform ''LeftArm'' has been deleted
-
-    Transform
-    ''LeftShoulder'' has been deleted
-
-    Transform ''Head'' has been deleted
-
-    Transform
-    ''Neck'' has been deleted
-
-    Transform ''RightHand'' has been deleted
-
-    Transform
-    ''RightForeArm'' has been deleted
-
-    Transform ''RightArm'' has been deleted
-
-    Transform
-    ''RightShoulder'' has been deleted
-
-    Transform ''Spine2'' has been deleted
-
-    Transform
-    ''Spine1'' has been deleted
-
-    Transform ''Spine'' has been deleted
-
-    Transform
-    ''Hips'' has been deleted
-
-    Transform ''Armature'' has been deleted'
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &8854677247501609986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,11 +88,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  damage: 5
+  damage: 10
   speed: 8
-  cardDeck: []
+  defence: 1
+  attackSpeed: 1
+  cardDeck:
+  - {fileID: 1062776756893242925, guid: d2a4a5ff86f90764788dee2f149b3a7e, type: 3}
+  - {fileID: 1062776756893242925, guid: 412cc6a0cbf49cb4cb8fae7a055caf59, type: 3}
+  - {fileID: 1062776756893242925, guid: e6bb9c42a2cce7246a8ae6616b1dfc13, type: 3}
+  - {fileID: 1062776756893242925, guid: 22bd91ef708a918488f53140b0cb4557, type: 3}
   score: 0
---- !u!114 &1382823598
+  damageMultiplier: 1
+  speedMultiplier: 1
+  defenceMultiplier: 1
+  attackSpeedMultiplier: 1
+--- !u!114 &1382823604
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,9 +111,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8031977866863993894}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25f660ebbd01afe46b8ef8f0bfed5888, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ea72b8562c3f784682fa3cf35c45cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cards: []
 --- !u!1001 &8854677247408048283
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -237,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: monster_orc
       objectReference: {fileID: 0}
+    - target: {fileID: 7823708891515688132, guid: 71c2b86e4d7bc49b894c67d7b7a7b83f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a71b597eeab100e4ea023c4bd3dea8c4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c2b86e4d7bc49b894c67d7b7a7b83f, type: 3}
 --- !u!4 &8346018697268459234 stripped

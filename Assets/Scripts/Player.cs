@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float health = 100.0f;
-    [SerializeField] private float damage = 5.0f;
+    [SerializeField] private float damage = 10.0f;
     [SerializeField] private float speed = 8.0f;
     [SerializeField] private float defence = 1.0f;
     [SerializeField] private float attackSpeed = 1.0f;
@@ -19,18 +19,6 @@ public class Player : MonoBehaviour
     public float defenceMultiplier = 1.0f;
     public float attackSpeedMultiplier = 1.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public void IncreaseHealth(float healthIncrease)
     {
         health += healthIncrease;
@@ -42,10 +30,19 @@ public class Player : MonoBehaviour
     
     public void TakeDamage(float damageTaken)
     {
-        health -= damageTaken;
-        if (health <= 0)
+        float randVal = Random.value;
+        if (randVal < GetDefence())
         {
-            Die();
+            Debug.Log("Player blocked the attack");
+        }
+        else
+        {
+            health -= damageTaken;
+            Debug.Log("Player took " + damageTaken + " damage");
+            if (health <= 0)
+            {
+                Die();
+            }
         }
     }
     
@@ -58,7 +55,7 @@ public class Player : MonoBehaviour
     // Return Player stats
     public float GetDamage()
     {
-        return damage * damageMultiplier;
+        return Random.Range(damage-2,damage) * damageMultiplier;
     }
     
     public float GetSpeed()
@@ -68,11 +65,16 @@ public class Player : MonoBehaviour
     
     public float GetDefence()
     {
-        return defence * defenceMultiplier;
+        return (defence * defenceMultiplier) / 100;
     }
     
     public float GetAttackSpeed()
     {
         return attackSpeed * attackSpeedMultiplier;
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 }
