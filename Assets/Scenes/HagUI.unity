@@ -709,10 +709,13 @@ MonoBehaviour:
   - {fileID: 1062776756893242925, guid: 412cc6a0cbf49cb4cb8fae7a055caf59, type: 3}
   - {fileID: 1062776756893242925, guid: 22bd91ef708a918488f53140b0cb4557, type: 3}
   - {fileID: 1062776756893242925, guid: e6bb9c42a2cce7246a8ae6616b1dfc13, type: 3}
+  - {fileID: 1062776756893242925, guid: 2cca1dcc948fc0242a4e95b6ba2aff73, type: 3}
   buttonList:
   - {fileID: 1117416793}
   - {fileID: 1227699359}
   - {fileID: 419635162}
+  - {fileID: 438574107}
+  - {fileID: 115835738}
 --- !u!1 &419635160
 GameObject:
   m_ObjectHideFlags: 0
