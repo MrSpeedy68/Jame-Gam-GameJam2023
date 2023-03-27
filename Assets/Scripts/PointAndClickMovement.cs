@@ -29,7 +29,8 @@ public class PointAndClickMovement : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _player = GetComponent<Player>();
         _animator = GetComponentInChildren<Animator>();
-
+        
+        _navMeshAgent.speed = _player.GetSpeed();
         _currentGoToPos = transform.position;
     }
 
@@ -58,7 +59,7 @@ public class PointAndClickMovement : MonoBehaviour
                 if (_enemy)
                 {
                     _animator.SetTrigger("Attack");
-                    _enemy.TakeDamage(10f);
+                    _enemy.TakeDamage(_player.GetDamage());
                     _navMeshAgent.isStopped = true;
                     _bInteracting = false;
                 }
