@@ -101,6 +101,7 @@ public class CardManager : MonoBehaviour
         switch (buff)
         {
             case Card.BUFF.DAMAGE:
+                
                 break;
             case Card.BUFF.SPEED:
                 break;
@@ -109,12 +110,12 @@ public class CardManager : MonoBehaviour
             case Card.BUFF.ATTACKSPEED:
                 break;
             case Card.BUFF.HEALTH:
+                var particle = Instantiate(GameAssets.i.HealParticle, _player.transform.position, Quaternion.identity);
+                particle.transform.parent = _player.transform;
+                Destroy(particle, 20f);
                 break;
             default:
                 break;
-        }
-        {
-            
         }
     }
     
