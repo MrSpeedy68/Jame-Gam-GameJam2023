@@ -35,6 +35,7 @@ public class CardSelector : MonoBehaviour
             if (!selectedCards.Contains(cardList[randomIndex]))
             {
                 selectedCards.Add(cardList[randomIndex]); // Add the card to the list of selected cards
+                
             }
             else
             {
@@ -43,28 +44,16 @@ public class CardSelector : MonoBehaviour
         }
     }
 
+
+
     public void PurchaseCard(int index)
     {
         if(player.score >= selectedCards[index].cardPrice)
         {
             player.RemoveScore(selectedCards[index].cardPrice);
-            // if(!player.IsDeckFull())
-            // {
-            //     for (int i = 0; i < 4; i++)
-            //     {
-            //         if (player.cardDeck[i] != null)
-            //         {
-            //             player.cardDeck[i] = selectedCards[index];
-            //             break;
-            //         }
-            //     }
-            //     
-            // }
-            // else
-            // {
-                player.cardDeck[currentSelectedCard] = selectedCards[index];
-                UpdateCards();
-            //}
+            player.cardDeck[currentSelectedCard] = selectedCards[index];
+            UpdateCards();
+            
            
         }
         

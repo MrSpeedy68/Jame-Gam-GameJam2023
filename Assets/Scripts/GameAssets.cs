@@ -24,4 +24,8 @@ public class GameAssets : MonoBehaviour
     public GameObject Card2;
     public GameObject Card3;
     public GameObject Card4;
+
+    public GameObject HealParticle;
+    public GameObject DamageParticle;
+    
 }

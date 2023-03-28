@@ -7,6 +7,7 @@ public class CardManager : MonoBehaviour
 {
     private Player _player;
     public Card[] cards;
+    private ParticleSystem[] _particleSystems;
     private void Start()
     {
         _player = FindObjectOfType<Player>();
@@ -70,14 +71,11 @@ public class CardManager : MonoBehaviour
             _player.speedMultiplier += cards[index].speedBuff;
             _player.defenceMultiplier += cards[index].defenceBuff;
             _player.attackSpeedMultiplier += cards[index].attackSpeedBuff;
-            
-            Debug.Log("Damage: " + _player.damageMultiplier);
-            Debug.Log("Speed: " + _player.speedMultiplier);
-            Debug.Log("Defence: " + _player.defenceMultiplier);
-            Debug.Log("Attack Speed: " + _player.attackSpeedMultiplier);
 
             StartCoroutine("CardBuffCooldown", index);
             StartCoroutine("CardCoolDown", index);
+            
+            CardParticles(index);
         }
         else
         {
@@ -94,13 +92,32 @@ public class CardManager : MonoBehaviour
             _player.speedMultiplier -= cards[index].speedBuff;
             _player.defenceMultiplier -= cards[index].defenceBuff;
             _player.attackSpeedMultiplier -= cards[index].attackSpeedBuff;
-            
-            Debug.Log("Damage After Deactivate: " + _player.damageMultiplier);
-            Debug.Log("Speed After Deactivate: " + _player.speedMultiplier);
-            Debug.Log("Defence After Deactivate: " + _player.defenceMultiplier);
-            Debug.Log("Attack Speed After Deactivate: " + _player.attackSpeedMultiplier);
         }
     }
+
+    private void CardParticles(int index)
+    {
+        Card.BUFF buff = cards[index].buff;
+        switch (buff)
+        {
+            case Card.BUFF.DAMAGE:
+                break;
+            case Card.BUFF.SPEED:
+                break;
+            case Card.BUFF.DEFENCE:
+                break;
+            case Card.BUFF.ATTACKSPEED:
+                break;
+            case Card.BUFF.HEALTH:
+                break;
+            default:
+                break;
+        }
+        {
+            
+        }
+    }
+    
 
     private IEnumerator CardBuffCooldown(int index)
     {

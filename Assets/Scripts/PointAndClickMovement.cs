@@ -135,6 +135,10 @@ public class PointAndClickMovement : MonoBehaviour
 
                     FindGroundPoint(hit, ray);
                 }
+                else
+                {
+                    FindGroundPoint(hit, ray);
+                }
             }
         }
     }
