@@ -36,8 +36,11 @@ public class PlayerUI : MonoBehaviour
     {
         for (int i = 0; i < +_cardManager.cards.Length; i++)
         {
-            _cardSlots[i].GetComponent<Image>().sprite = _cardManager.cards[i].cardSprite;
-            _cardSlots[i].GetComponent<Image>().color = _cardManager.cards[i].color;
+            if (_cardManager.cards[i] != null)
+            {
+                _cardSlots[i].GetComponent<Image>().sprite = _cardManager.cards[i].cardSprite;
+                _cardSlots[i].GetComponent<Image>().color = _cardManager.cards[i].color;
+            }
         }
     }
 

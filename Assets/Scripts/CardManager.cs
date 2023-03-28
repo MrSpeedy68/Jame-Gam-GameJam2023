@@ -12,14 +12,19 @@ public class CardManager : MonoBehaviour
         _player = FindObjectOfType<Player>();
         cards = _player.cardDeck;
 
-        foreach (var card in cards)
+        if (cards.Length > 0)
         {
-            card.color = Color.white;
+            foreach (var card in cards)
+            {
+                card.color = Color.white;
+            }
         }
     }
 
     private void Update()
     {
+        //cards = _player.cardDeck;
+        
         if (Input.GetButtonDown("Card1"))
         {
             UseCard(0);
@@ -43,12 +48,15 @@ public class CardManager : MonoBehaviour
 
     private void UseCard(int index)
     {
-        if (cards[index] != null && cards[index].IsUsable())
+        if (cards.Length > 0 && cards[index] != null)
         {
-            if(cards[index].type == Card.TYPE.ABILITY)
-                ActivateAbility(index);
-            else if (cards[index].type == Card.TYPE.BUFF)
-                ActivateBuff(index);
+            if (cards[index].IsUsable())
+            {
+                if(cards[index].type == Card.TYPE.ABILITY)
+                    ActivateAbility(index);
+                else if (cards[index].type == Card.TYPE.BUFF)
+                    ActivateBuff(index);
+            }
         }
     }
 
@@ -141,6 +149,11 @@ public class CardManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void UpdateCards()
+    {
+        cards = _player.cardDeck;
     }
     
 }

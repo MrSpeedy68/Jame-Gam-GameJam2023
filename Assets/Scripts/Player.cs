@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float attackSpeed = 1.0f;
 
     public BarSlider barSlider;
-    public Card[] cardDeck = new Card[4];
+    public Card[] cardDeck;
     public int score = 0;
     
     [Header("Multipliers")]
@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        cardDeck = new Card[4];
+        
         barSlider = FindObjectOfType<BarSlider>();
         barSlider.SetMaxSlider((int)health);
     }
@@ -118,5 +120,10 @@ public class Player : MonoBehaviour
             }
         }
         return cardNo == 4;
+    }
+
+    public void SendCardUpdate()
+    {
+        GetComponent<CardManager>().UpdateCards();
     }
 }

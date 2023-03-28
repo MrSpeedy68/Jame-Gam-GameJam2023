@@ -9,7 +9,7 @@ public class AISpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemies(Random.Range(1, 10));
+        SpawnEnemies(Random.Range(1, 6));
     }
 
     private void SpawnEnemies(int amount)
