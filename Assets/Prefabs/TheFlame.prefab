@@ -65,10 +65,11 @@ MonoBehaviour:
   cardSprite: {fileID: 21300000, guid: ce51b7e664ecbb34c96ed7d9bfc9175d, type: 3}
   color: {r: 1, g: 0, b: 0, a: 1}
   cardName: The Flame
+  cardPrice: 0
   isActive: 1
-  buffDuration: 10
+  buffDuration: 0
   damageBuff: 0
   speedBuff: 0
   defenceBuff: 0
   attackSpeedBuff: 0
-  healthBuff: 20
+  healthBuff: 0
