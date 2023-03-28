@@ -37,6 +37,7 @@ public class PointAndClickMovement : MonoBehaviour
     private void Update()
     {
         _animationStateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+        _navMeshAgent.speed = _player.GetSpeed();
 
         _animator.SetFloat("DistanceToTarget", Vector3.Distance(transform.position, _currentGoToPos));
         
