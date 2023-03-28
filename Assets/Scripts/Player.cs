@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 8.0f;
     [SerializeField] private float defence = 1.0f;
     [SerializeField] private float attackSpeed = 1.0f;
-    
+
+    public BarSlider barSlider;
     public Card[] cardDeck = new Card[4];
     public int score = 0;
     
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
         else
         {
             health -= damageTaken;
+            barSlider.SetFill((int)health);
             int damage = (int)damageTaken;
             DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString());
             if (health <= 0)
