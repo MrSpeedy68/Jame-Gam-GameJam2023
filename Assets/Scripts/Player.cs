@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
@@ -20,13 +22,21 @@ public class Player : MonoBehaviour
     public float defenceMultiplier = 1.0f;
     public float attackSpeedMultiplier = 1.0f;
 
+    private void Start()
+    {
+        barSlider = FindObjectOfType<BarSlider>();
+        barSlider.SetMaxSlider((int)health);
+    }
+
     public void IncreaseHealth(float healthIncrease)
     {
         health += healthIncrease;
         if (health < 100f)
         {
             health = 100f;
+            barSlider.SetFill((int)health);
         }
+        barSlider.SetFill((int)health);
     }
     
     public void TakeDamage(float damageTaken)
@@ -35,14 +45,14 @@ public class Player : MonoBehaviour
         if (randVal < GetDefence())
         {
             Debug.Log("Player blocked the attack");
-            DamagePopup.Create(transform.position + Vector3.up * 2, "Blocked");
+            DamagePopup.Create(transform.position + Vector3.up * 2, "Blocked", Color.green);
         }
         else
         {
             health -= damageTaken;
-            barSlider.SetFill((int)health);
             int damage = (int)damageTaken;
-            DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString());
+            barSlider.SetFill((int)health);
+            DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString(), Color.yellow);
             if (health <= 0)
             {
                 Die();

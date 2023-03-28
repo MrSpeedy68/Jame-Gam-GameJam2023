@@ -105,6 +105,7 @@ MonoBehaviour:
   attackInterval: 5
   maxSightDistance: 10
   rayAmount: 7
+  coinDrop: {fileID: 6588236773979482113, guid: 0ec8f2e208c73e945b1d18c9bc269a04, type: 3}
 --- !u!114 &4441492185351998687
 MonoBehaviour:
   m_ObjectHideFlags: 0

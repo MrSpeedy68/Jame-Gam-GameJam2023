@@ -73,4 +73,9 @@ public class CardSelector : MonoBehaviour
     {
         currentSelectedCard = dropdown.value;
     }
+    
+    public void CloseUI()
+    {
+        GetComponentInParent<Canvas>().enabled = false;
+    }
 }

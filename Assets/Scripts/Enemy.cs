@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
     private bool _bisDead = false;
     
+    [SerializeField] private GameObject coinDrop;
+    
     private void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -77,7 +79,7 @@ public class Enemy : MonoBehaviour
     {
         health -= damageTaken;
         int damage = (int)damageTaken;
-        DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString());
+        DamagePopup.Create(transform.position + Vector3.up * 2, damage.ToString(), Color.red);
     }
 
     public void DealDamage()
@@ -91,6 +93,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         _bisDead = true;
+        Instantiate(coinDrop,transform.position, Quaternion.identity);
         
         Destroy(gameObject);
     }

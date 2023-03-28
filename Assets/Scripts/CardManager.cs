@@ -124,6 +124,8 @@ public class CardManager : MonoBehaviour
     
     private void ActivateAbility(int index)
     {
+        cards[index].isActive = true;
+        
         switch (cards[index].ability)
         {
             case Card.ABILITY.FIREBALL:
