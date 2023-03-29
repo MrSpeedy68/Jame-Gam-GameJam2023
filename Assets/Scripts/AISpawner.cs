@@ -5,14 +5,15 @@ using UnityEngine;
 public class AISpawner : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyPrefab;
+    public int AIamount;
     
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemies(Random.Range(1, 6));
+        SpawnEnemies(Random.Range(1, AIamount));
     }
 
-    private void SpawnEnemies(int amount)
+    public void SpawnEnemies(int amount)
     {
         // Spawn enemies
         for (int i = 0; i < amount; i++)
