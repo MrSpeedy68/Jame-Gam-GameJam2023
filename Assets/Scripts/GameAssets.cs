@@ -23,8 +23,8 @@ public class GameAssets : MonoBehaviour
     public GameObject Card1;
     public GameObject Card2;
 
-    public GameObject speedParticle;
-    public GameObject shieldParticle;
+    public GameObject SpeedParticle;
+    public GameObject ShieldParticle;
     public GameObject HealParticle;
     public GameObject DamageParticle;
     

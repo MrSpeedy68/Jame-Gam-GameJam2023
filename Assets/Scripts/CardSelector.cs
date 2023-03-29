@@ -11,6 +11,7 @@ public class CardSelector : MonoBehaviour
     [SerializeField] private List<Card> cardList; // List of existing cards
     [SerializeField] private List<Button> buttonList; // List of buttons to assign the selected cards to
     [SerializeField] private TMPro.TMP_Dropdown dropdown;
+    [SerializeField] private List<TMP_Text> priceText;
 
     private List<Card> selectedCards = new List<Card>(6);
 
@@ -23,6 +24,7 @@ public class CardSelector : MonoBehaviour
         for (int i = 0; i < selectedCards.Count; i++)
         {
             buttonList[i].image.sprite = selectedCards[i].cardSprite;
+            priceText[i].text = selectedCards[i].cardPrice.ToString();
         }
     }
 
