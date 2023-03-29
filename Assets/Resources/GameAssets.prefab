@@ -47,7 +47,7 @@ MonoBehaviour:
   pfDamagePopup: {fileID: 3403590831656135600, guid: b11ebe77d97219a45b845d72dd7c2037, type: 3}
   Card1: {fileID: 0}
   Card2: {fileID: 0}
-  speedParticle: {fileID: 1341618268083162, guid: b0295ed1cc6688a459ed03af9aa7dfef, type: 3}
-  shieldParticle: {fileID: 1200282832259902, guid: 5756c55aa5236114485245076256ce47, type: 3}
+  SpeedParticle: {fileID: 1341618268083162, guid: b0295ed1cc6688a459ed03af9aa7dfef, type: 3}
+  ShieldParticle: {fileID: 1200282832259902, guid: 5756c55aa5236114485245076256ce47, type: 3}
   HealParticle: {fileID: 1593335806905894, guid: 97c011a075a604441847441fe793419e, type: 3}
   DamageParticle: {fileID: 1382430444795516, guid: 8566b13e2e01b0545a2c4fa5404849c1, type: 3}
