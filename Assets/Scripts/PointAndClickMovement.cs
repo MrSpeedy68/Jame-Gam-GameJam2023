@@ -162,6 +162,6 @@ public class PointAndClickMovement : MonoBehaviour
     }
     private void DrawLocation()
     {
-        Destroy(Instantiate(drawObject, _currentGoToPos, Quaternion.identity), 10.0f);
+        Destroy(Instantiate(GameAssets.i.PointClickParticle, _currentGoToPos, Quaternion.identity), 2.0f);
     }
 }
