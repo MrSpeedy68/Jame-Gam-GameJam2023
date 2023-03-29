@@ -22,9 +22,9 @@ public class GameAssets : MonoBehaviour
 
     public GameObject Card1;
     public GameObject Card2;
-    public GameObject Card3;
-    public GameObject Card4;
 
+    public GameObject speedParticle;
+    public GameObject shieldParticle;
     public GameObject HealParticle;
     public GameObject DamageParticle;
     

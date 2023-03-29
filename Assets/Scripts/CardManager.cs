@@ -101,18 +101,26 @@ public class CardManager : MonoBehaviour
         switch (buff)
         {
             case Card.BUFF.DAMAGE:
-                
+                var particle = Instantiate(GameAssets.i.DamageParticle, _player.transform.position, Quaternion.identity);
+                particle.transform.parent = _player.transform;
+                Destroy(particle, 20f);
                 break;
             case Card.BUFF.SPEED:
+                var particle1 = Instantiate(GameAssets.i.SpeedParticle, _player.transform.position, Quaternion.identity);
+                particle1.transform.parent = _player.transform;
+                Destroy(particle1, 20f);
                 break;
             case Card.BUFF.DEFENCE:
+                var particle2 = Instantiate(GameAssets.i.ShieldParticle, _player.transform.position, Quaternion.identity);
+                particle2.transform.parent = _player.transform;
+                Destroy(particle2, 20f);
                 break;
             case Card.BUFF.ATTACKSPEED:
                 break;
             case Card.BUFF.HEALTH:
-                var particle = Instantiate(GameAssets.i.HealParticle, _player.transform.position, Quaternion.identity);
-                particle.transform.parent = _player.transform;
-                Destroy(particle, 20f);
+                var particle3 = Instantiate(GameAssets.i.HealParticle, _player.transform.position, Quaternion.identity);
+                particle3.transform.parent = _player.transform;
+                Destroy(particle3, 20f);
                 break;
             default:
                 break;

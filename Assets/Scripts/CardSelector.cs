@@ -12,7 +12,7 @@ public class CardSelector : MonoBehaviour
     [SerializeField] private List<Button> buttonList; // List of buttons to assign the selected cards to
     [SerializeField] private TMPro.TMP_Dropdown dropdown;
 
-    private List<Card> selectedCards = new List<Card>(5);
+    private List<Card> selectedCards = new List<Card>(6);
 
     void Start()
     {
