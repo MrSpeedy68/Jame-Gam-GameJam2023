@@ -1918,12 +1918,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardList:
-  - {fileID: 1062776756893242925, guid: d2a4a5ff86f90764788dee2f149b3a7e, type: 3}
-  - {fileID: 1062776756893242925, guid: 412cc6a0cbf49cb4cb8fae7a055caf59, type: 3}
-  - {fileID: 1062776756893242925, guid: 22bd91ef708a918488f53140b0cb4557, type: 3}
-  - {fileID: 1062776756893242925, guid: e6bb9c42a2cce7246a8ae6616b1dfc13, type: 3}
-  - {fileID: 1062776756893242925, guid: 2cca1dcc948fc0242a4e95b6ba2aff73, type: 3}
+  - {fileID: 1062776756893242925, guid: c7c12d91d0806a34d8abc692daa9e3b6, type: 3}
+  - {fileID: 1062776756893242925, guid: 87998cf6550705148a50ec75bef27a08, type: 3}
   - {fileID: 1062776756893242925, guid: 1f1e3c74fff1cf84eb677fbbf6f3378d, type: 3}
+  - {fileID: 1062776756893242925, guid: 2cca1dcc948fc0242a4e95b6ba2aff73, type: 3}
+  - {fileID: 1062776756893242925, guid: c0785672e7861c549a49dff6e27663e3, type: 3}
+  - {fileID: 1062776756893242925, guid: 1ffe851085cbd39468636ef6c68580c0, type: 3}
   buttonList:
   - {fileID: 4675714806636100569}
   - {fileID: 4675714806544818719}
