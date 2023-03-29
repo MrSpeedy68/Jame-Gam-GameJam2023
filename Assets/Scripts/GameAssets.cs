@@ -28,4 +28,6 @@ public class GameAssets : MonoBehaviour
     public GameObject HealParticle;
     public GameObject DamageParticle;
     
+    public GameObject PointClickParticle;
+    
 }

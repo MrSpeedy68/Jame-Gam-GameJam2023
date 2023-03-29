@@ -51,3 +51,4 @@ MonoBehaviour:
   ShieldParticle: {fileID: 1200282832259902, guid: 5756c55aa5236114485245076256ce47, type: 3}
   HealParticle: {fileID: 1593335806905894, guid: 97c011a075a604441847441fe793419e, type: 3}
   DamageParticle: {fileID: 1382430444795516, guid: 8566b13e2e01b0545a2c4fa5404849c1, type: 3}
+  PointClickParticle: {fileID: 1823205763136166, guid: d3c47dd4696b36a48986749fd7c44421, type: 3}
